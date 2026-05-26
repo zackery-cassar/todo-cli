@@ -1,6 +1,8 @@
 import { Command } from 'commander';
 import { addTask } from './commands/add';
 import { listTasks } from './commands/list';
+import { completeTask } from './commands/complete';
+
 
 const program = new Command();
 
@@ -21,6 +23,13 @@ program
   .description('List all tasks')
   .action(() => {
     listTasks();
+  });
+
+program
+  .command('complete <id>')
+  .description('Mark a task as completed')
+  .action((id: string) => {
+    completeTask(parseInt(id));
   });
 
 program.parse();
