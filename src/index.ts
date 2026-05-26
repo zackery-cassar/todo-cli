@@ -1,5 +1,6 @@
 import { Command } from 'commander';
 import { addTask } from './commands/add';
+import { listTasks } from './commands/list';
 
 const program = new Command();
 
@@ -13,6 +14,13 @@ program
   .description('Add a new task')
   .action((title: string) => {
     addTask(title);
+  });
+
+program
+  .command('list')
+  .description('List all tasks')
+  .action(() => {
+    listTasks();
   });
 
 program.parse();
